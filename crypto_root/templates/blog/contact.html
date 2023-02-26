@@ -1,0 +1,32 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+
+{% block content %}
+<div class="my-contact">
+    <h1>Моя страничка на github</h1>
+    <div class="link-contact-github"><a href="https://github.com/terereus2" target="_blank">terereus2</a></div>
+    <h1>Моя страничка на youtube</h1>
+    <div class="link-contact-youtube"><a href="https://www.youtube.com/@chineseweiqi9089/featured" target="_blank">Chinese Weiqi</a></div>
+    <h1>Моя страничка на EGF Official ratings system</h1>
+    <div class="link-contact-youtube"><a href="https://www.europeangodatabase.eu/EGD/Player_Card.php?&key=10986536" target="_blank">European Go Database</a></div>
+ 
+
+
+
+
+
+</div>
+
+
+<form class="contact-form" method="post">
+    <h1>Форма обратной связи</h1>
+  {% csrf_token %}
+
+    {% for elem in form %}
+    <p><label class="contact-form-label" for="{{ elem.id_for_label}}">{{ elem.label}}</label>{{elem}}</p>
+    {%endfor%}
+  <button type="submit">Отправить</button>
+
+</form>
+
+{% endblock content%}

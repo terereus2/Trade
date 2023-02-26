@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html'%}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+{% block content %}
+<div class="close-btc">
+    <h1>Закрытие торгов BTC вчера произошло на отметке {{close}}</h1>
+</div>
+<section class="new-article">
+    <h1>Новая статья</h1>
+
+    <div class="block_articles">
+
+        <p class="para_foto_articles">
+            <a href="{% url 'article_detail' pk %}">
+                <img class="foto_articles" src="{{ image.url }}" alt="{{ title }}">
+            </a>
+        </p>
+        <p class="para_title_articles"><a href="{% url 'article_detail' pk %}">{{title}}</a></p>
+    </div>
+
+    <div class="news">
+        <h2>Новости</h2>
+        <div class="news-foto-title">
+            {% if foto %}
+            <p class="news-foto">
+                <img src="{{ foto }}" alt="Bitcoin News Image" width="150" height="150" onerror="this.onerror=null; this.src='{% static 'images/btc001.jpg' %}'">
+            </p>
+            {% else %}
+            <p class="news-foto">
+                <img src="{% static 'images/btc001.jpg' %}" alt="Bitcoin News Image" width="150" height="150">
+            </p>
+
+            {% endif %}
+            <h3>{{name_title}}</h3>
+        </div >
+
+    <p>{{ text }}</p>
+
+    </div>
+
+</section>
+
+{% endblock content %}
+</body>
+</html>

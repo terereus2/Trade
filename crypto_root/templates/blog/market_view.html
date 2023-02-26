@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html'%}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>{% block title %} Home {% endblock title %}</title>
+</head>
+<body>
+{% block content %}
+<div class=" container">
+{% for p in obj %}
+
+<div class="content-view">
+{% if p.photo %}
+    <p><img class="photo-chart" src="{{ p.photo.url }}" alt=" image"></p>
+{% endif %}
+
+<div class="para">
+    {{p.text|linebreaks}}
+    <p>{{p.date}}</p>
+</div>
+
+</div>
+
+{% endfor%}
+</div>
+{% endblock content %}
+</body>
+</html>
