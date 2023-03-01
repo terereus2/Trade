@@ -23,7 +23,8 @@ MEDIA_ROOT = BASE_DIR
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['trademarket.space','localhost']
+
 
 # Application definition
 
