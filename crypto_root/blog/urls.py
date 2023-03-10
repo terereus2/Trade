@@ -12,5 +12,6 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('<int:pk>/up/',views.positive_post, name='positive_post'),
     path('<int:pk>/down/',views.negative_post, name='negative_post'),
+    path('card_deck_52/', views.card_deck_52, name='card_deck_52'),
 
 ]

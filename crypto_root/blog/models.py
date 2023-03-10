@@ -44,3 +44,12 @@ class Contact(models.Model):
     email = models.EmailField(max_length=250)
     subject = models.CharField(max_length=200)
     message = models.TextField(max_length=1000)
+
+
+class CardDeck(models.Model):
+    rang = models.CharField(max_length=5)
+    suit = models.CharField(max_length=10)
+    img = models.ImageField()
+
+    class Meta:
+        db_table = 'cards_52_carddeck'

@@ -1,6 +1,7 @@
 import ccxt
 import time
 import requests
+import random
 from bs4 import BeautifulSoup
 
 from django.shortcuts import render, redirect, HttpResponse
@@ -10,10 +11,20 @@ from django.contrib import messages
 from django.core.cache import cache
 
 from .forms import UserRegisterForm, CommentForm, ContactForm
-from .models import Blog, Article, Comment, UserVote
+from .models import Blog, Article, Comment, UserVote,CardDeck
 
 
 # Create your views here.
+
+def card_deck_52(request):
+    card_deck = list(CardDeck.objects.all())
+    print(card_deck)
+    random.shuffle(card_deck)
+    context = {'card_deck': card_deck}
+    return render(request, 'blog/cards_52.html', context=context)
+
+
+
 def get_news():
     url = 'https://cryptonews.net/ru/news/bitcoin/'
     headers = {
@@ -35,11 +46,6 @@ def get_news():
     text = ''
     for elem in p_texts:
         text = text + elem + ' '
-
-
-
-
-
     context = {'name_title': name_title,'foto':foto,'text':text}
     return context
 

@@ -5,36 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-     <link rel="stylesheet" href="{% static 'css/media.css'%}">
+    <link rel="stylesheet" href="{% static 'css/media.css'%}">
+
     <title>{% block title %}Title {% endblock title %}</title>
+
+
 </head>
 <body>
-<header class="heder" style="background-image:url('{% static 'images/blue.jpg' %}'); background-repeat: no-repeat; background-size:cover; background-position:center;height: auto">
+<header class="heder"
+        style="background-image:url('{% static 'images/blue.jpg' %}'); background-repeat: no-repeat; background-size:cover; background-position:center;height: auto">
     <div class="logo"><a href="{% url 'home' %}"><img class="img-logo" src="{% static 'images/btc.jpg' %}"></a></div>
-<div class="heder-inner">
-    <p class="slogan"><a href="{% url 'home' %}">Тренд - это ваш друг</a></p>
-    <nav>
-        <ul class="navigator">
-            <li><a class="view_market" href="{% url 'market_view' %}">Обзор рынка</a></li>
-            <li><a class="articles" href="{% url 'articles' %}">Статьи<a></a></li>
-            <li><a class="contact" href="{% url 'contact' %}">Контакты</a></li>
-        </ul>
-    </nav>
-    <div class="login">
-        {% if request.user.is_authenticated %}
-        <div><span class="user-name">{{ user.username }} | </span><a href="{% url 'logout' %}">Выйти</a></div>
-       {% else %}
-    <div><a href="{% url 'register' %}">Регистрация</a></div>
-    <div><a href="{% url 'login' %}">Войти</a></div>
-        {% endif %}
+    <div class="heder-inner">
+        <p class="slogan"><a href="{% url 'home' %}">Тренд - это ваш друг</a></p>
+        <nav>
+            <ul class="navigator">
+                <li><a class="view_market" href="{% url 'market_view' %}">Обзор рынка</a></li>
+                <li><a class="articles" href="{% url 'articles' %}">Статьи<a></a></li>
+                <li><a class="articles" href="{% url 'card_deck_52' %}">Игра<a></a></li>
+                <li><a class="contact" href="{% url 'contact' %}">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="login">
+            {% if request.user.is_authenticated %}
+            <div><span class="user-name">{{ user.username }} | </span><a href="{% url 'logout' %}">Выйти</a></div>
+            {% else %}
+            <div><a href="{% url 'register' %}">Регистрация</a></div>
+            <div><a href="{% url 'login' %}">Войти</a></div>
+            {% endif %}
 
-    </div>
+        </div>
     </div>
 
 </header>
 
 {% block content %}
-
 
 
 {% endblock content %}
