@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/cards_styles.css'%}">
+    <script type="text/javascript" src="{% static 'js/my_scripts.js' %}" defer></script>
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+{% for elem in card_deck %}
+<div class="{{elem.suit}} start" onclick="click()">
+    <img class="cards-img" src=" /{{ elem.img }}" width="195" height="300">
+</div>
+
+{% endfor%}
+
+<p class="btns">
+    <button class="red">red</button>
+    <button class="black">black</button>
+</p>
+
+
+<label class="red-label"><span>RED</span>
+    <input class="red-value" type="text" readonly>
+</label>
+
+<label class="black-label"><span>BLACK</span>
+    <input id='f' class="black-value" type="text" readonly>
+</label>
+
+<p class="btns-res-ex">
+    <a class="restart" href="{% url 'card_deck_52' %}">Restart</a>
+    <a class="exit" href="{% url 'home' %}">Exit</a>
+</p>
+
+
+{% endblock content %}
+</body>
+</html>
+
