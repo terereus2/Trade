@@ -18,10 +18,10 @@ from .models import Blog, Article, Comment, UserVote,CardDeck
 
 def card_deck_52(request):
     card_deck = list(CardDeck.objects.all())
-    print(card_deck)
     random.shuffle(card_deck)
     context = {'card_deck': card_deck}
     return render(request, 'blog/cards_52.html', context=context)
+
 
 
 
@@ -48,6 +48,7 @@ def get_news():
         text = text + elem + ' '
     context = {'name_title': name_title,'foto':foto,'text':text}
     return context
+
 
 
 def get_btc_exchange_rate():
@@ -87,7 +88,7 @@ def home(request):
     context_1 = last_add_article()
     context_2 = get_btc_exchange_rate()
     context_3 = get_news()
-    context = {**context_1, **context_2, **context_3}
+    context = {**context_1, **context_2,**context_3}
     return render(request, 'blog/home.html', context=context)
 
 
